@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/02/17/代理模式/"/>
+  <link rel="canonical" href="http://example.com/2025/03/01/mysql和jdbc的一些考点/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>代理模式 - hamaha</title>
+  <title>MySQL和JDBC的一些考点 - hamaha</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="hamaha - John Doe - hamaha">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="代理模式">
-<meta property="og:url" content="http://example.com/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="MySQL和JDBC的一些考点">
+<meta property="og:url" content="http://example.com/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/index.html">
 <meta property="og:site_name" content="hamaha">
-<meta property="og:description" content="代理模式（Proxy Pattern）是一种结构型设计模式，通常用于为其他对象提供一种代理以控制对这个对象的访问。代理类可以在实际调用对象的方法前后添加额外的操作，例如权限控制、日志记录、延迟加载等。 代理模式的例子假设我们有一个 UserService 类，它负责用户的相关操作。我们希望在执行用户操作之前，记录日志。通过代理模式，我们可以在不修改原有 UserService 代码的前提下，给它添">
+<meta property="og:description" content="总结些jdbc和mysql的面试考点  JDBC 面试考点 JDBC 基础知识 JDBC 的架构与工作流程：Driver、DriverManager、Connection、Statement、PreparedStatement、CallableStatement、ResultSet 等。 如何加载 JDBC 驱动（如：Class.forName()，SPI 机制等）。   连接管理与连接池 获取数">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-02-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-18T14:43:55.713Z">
+<meta property="article:published_time" content="2025-02-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-01T07:38:33.453Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2338,7 +2338,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/17/代理模式/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/01/MySQL和JDBC的一些考点/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="hamaha">
   </span>
@@ -2359,7 +2359,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        代理模式
+        MySQL和JDBC的一些考点
       </h1>
       <div class='new-meta-box'>
         
@@ -2395,10 +2395,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-02-17T00:00:00+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-03-01T00:00:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Feb 17, 2025</p>
+    <p>发布于：Mar 1, 2025</p>
   </a>
 </div>
 
@@ -2421,32 +2421,93 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>代理模式（Proxy Pattern）是一种结构型设计模式，通常用于为其他对象提供一种代理以控制对这个对象的访问。代理类可以在实际调用对象的方法前后添加额外的操作，例如权限控制、日志记录、延迟加载等。</p>
-<h3 id="代理模式的例子"><a href="#代理模式的例子" class="headerlink" title="代理模式的例子"></a>代理模式的例子</h3><p>假设我们有一个 <strong>UserService</strong> 类，它负责用户的相关操作。我们希望在执行用户操作之前，记录日志。通过代理模式，我们可以在不修改原有 <code>UserService</code> 代码的前提下，给它添加日志记录功能。</p>
-<h4 id="1-真实对象（Real-Object）"><a href="#1-真实对象（Real-Object）" class="headerlink" title="1. 真实对象（Real Object）"></a>1. 真实对象（Real Object）</h4><p>首先，定义一个 <code>UserService</code> 接口和实现它的 <code>UserServiceImpl</code> 类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 真实对象接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">addUser</span><span class="params">(String name)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteUser</span><span class="params">(String name)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 真实对象实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Adding user: &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUser</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Deleting user: &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-代理类（Proxy）"><a href="#2-代理类（Proxy）" class="headerlink" title="2. 代理类（Proxy）"></a>2. 代理类（Proxy）</h4><p>接下来，我们创建一个代理类，它实现了 <code>UserService</code> 接口，并在执行 <code>UserService</code> 的方法前后加上额外的逻辑（例如日志记录）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代理类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceProxy</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserService userService;  <span class="comment">// 持有真实对象的引用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserServiceProxy</span><span class="params">(UserService userService)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userService = userService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Log: Before adding user...&quot;</span>);</span><br><span class="line">        userService.addUser(name);  <span class="comment">// 调用真实对象的方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Log: After adding user...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUser</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Log: Before deleting user...&quot;</span>);</span><br><span class="line">        userService.deleteUser(name);  <span class="comment">// 调用真实对象的方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Log: After deleting user...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-客户端代码（Client）"><a href="#3-客户端代码（Client）" class="headerlink" title="3. 客户端代码（Client）"></a>3. 客户端代码（Client）</h4><p>最后，在客户端代码中，我们可以通过代理对象来调用方法，而不需要直接操作真实对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建真实对象</span></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserServiceImpl</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用代理类</span></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">proxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserServiceProxy</span>(userService);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调用方法，代理类会在调用前后做一些额外的操作</span></span><br><span class="line">        proxy.addUser(<span class="string">&quot;John Doe&quot;</span>);</span><br><span class="line">        proxy.deleteUser(<span class="string">&quot;John Doe&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-输出结果"><a href="#4-输出结果" class="headerlink" title="4. 输出结果"></a>4. 输出结果</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Log: Before adding user...</span><br><span class="line">Adding user: John Doe</span><br><span class="line">Log: After adding user...</span><br><span class="line">Log: Before deleting user...</span><br><span class="line">Deleting user: John Doe</span><br><span class="line">Log: After deleting user...</span><br></pre></td></tr></table></figure>
-
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ul>
-<li>**真实对象 (<code>UserServiceImpl</code>)**：它实现了 <code>UserService</code> 接口，提供实际的用户操作（添加用户、删除用户等）。</li>
-<li>**代理类 (<code>UserServiceProxy</code>)**：它实现了与真实对象相同的接口，并在每个方法调用前后加入了日志记录功能。</li>
-<li>**客户端 (<code>Main</code>)**：通过代理类来调用用户操作，代理类在实际操作之前和之后添加了日志打印功能。</li>
+    <p>总结些jdbc和mysql的面试考点</p>
+<hr>
+<h2 id="JDBC-面试考点"><a href="#JDBC-面试考点" class="headerlink" title="JDBC 面试考点"></a>JDBC 面试考点</h2><ol>
+<li><strong>JDBC 基础知识</strong><ul>
+<li>JDBC 的架构与工作流程：Driver、DriverManager、Connection、Statement、PreparedStatement、CallableStatement、ResultSet 等。</li>
+<li>如何加载 JDBC 驱动（如：<code>Class.forName()</code>，SPI 机制等）。</li>
 </ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>代理模式的核心思想是：</p>
-<ul>
-<li><strong>代理对象</strong>和<strong>真实对象</strong>实现相同的接口。</li>
-<li>代理对象在调用真实对象方法前后可以增加一些附加操作，比如日志、权限验证、延迟加载等。</li>
-<li>客户端并不直接与真实对象交互，而是通过代理类来完成。</li>
+</li>
+<li><strong>连接管理与连接池</strong><ul>
+<li>获取数据库连接的方法、连接字符串配置。</li>
+<li>自动提交与手动事务控制：如何通过 <code>setAutoCommit(false)</code>、<code>commit()</code> 和 <code>rollback()</code> 控制事务。</li>
+<li>连接池的概念及常见实现（如 HikariCP、DBCP、C3P0 等），及其优缺点。</li>
 </ul>
-<p>这种方式可以帮助我们在不修改原有代码的情况下，动态地为真实对象添加功能，比如日志、缓存、性能监控等。</p>
-<h2 id="课题！！！！！！"><a href="#课题！！！！！！" class="headerlink" title="课题！！！！！！"></a>课题！！！！！！</h2><p>我要往下学aop了，这个以后再说。代理类实现一个jdbc连接池</p>
+</li>
+<li><strong>SQL 执行与防止 SQL 注入</strong><ul>
+<li>Statement 与 PreparedStatement 的区别与使用场景，为什么推荐使用 PreparedStatement（预编译、参数绑定、防注入等）。</li>
+<li>批处理（Batch Processing）如何提高批量操作的性能。</li>
+</ul>
+</li>
+<li><strong>事务管理与隔离级别</strong><ul>
+<li>JDBC 中如何管理事务、常见事务隔离级别（READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ、SERIALIZABLE）的区别以及各自的优缺点。</li>
+<li>实际项目中如何选择合适的隔离级别，防止脏读、不可重复读和幻读等问题。</li>
+</ul>
+</li>
+<li><strong>异常处理与资源释放</strong><ul>
+<li>如何捕获和处理 SQLException。</li>
+<li>资源释放的最佳实践（如使用 try-with-resources 语法）。</li>
+</ul>
+</li>
+<li><strong>性能优化</strong><ul>
+<li>如何使用 PreparedStatement 预编译 SQL。</li>
+<li>如何调优批量插入、批量更新操作，减少网络往返和数据库负载。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="MySQL-面试考点"><a href="#MySQL-面试考点" class="headerlink" title="MySQL 面试考点"></a>MySQL 面试考点</h2><ol>
+<li><strong>MySQL 基础与架构</strong><ul>
+<li>MySQL 的基本架构、存储引擎（InnoDB 与 MyISAM 的区别、优势及适用场景）。</li>
+<li>MySQL 的事务支持：ACID 特性、InnoDB 如何实现事务、行锁与表锁的区别。</li>
+</ul>
+</li>
+<li><strong>索引设计与查询优化</strong><ul>
+<li>索引的概念、类型（B-Tree、Hash、全文索引、位图索引等），如何根据查询场景选择合适的索引。</li>
+<li>复合索引与最左前缀原则。</li>
+<li>使用 EXPLAIN 分析查询执行计划，识别慢查询和优化建议。</li>
+</ul>
+</li>
+<li><strong>事务隔离级别</strong><ul>
+<li>事务隔离级别的介绍及在实际业务中的应用场景（例如使用 REPEATABLE READ 处理订单操作、SERIALIZABLE 应用于金融系统等）。</li>
+<li>脏读、不可重复读、幻读的概念及如何避免。</li>
+</ul>
+</li>
+<li><strong>SQL 优化与性能调优</strong><ul>
+<li>常见的 SQL 优化策略（如查询重构、索引覆盖、避免全表扫描等）。</li>
+<li>数据库参数调优：如缓冲池、连接数、查询缓存等配置如何影响性能。</li>
+<li>数据分区、分库分表的基本思路和使用场景。</li>
+</ul>
+</li>
+<li><strong>备份与恢复、复制与高可用</strong><ul>
+<li>MySQL 数据备份方案（如 mysqldump、XtraBackup 等）。</li>
+<li>主从复制、半同步复制、MGR（组复制）以及高可用架构的设计思想。</li>
+<li>灾备方案和数据恢复策略。</li>
+</ul>
+</li>
+<li><strong>安全性</strong><ul>
+<li>用户权限管理与认证机制。</li>
+<li>防止 SQL 注入、XSS 等安全风险的措施。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="综合考点"><a href="#综合考点" class="headerlink" title="综合考点"></a>综合考点</h2><ul>
+<li><strong>JDBC 与 MySQL 结合</strong><ul>
+<li>如何配置 JDBC 连接 MySQL。</li>
+<li>数据库连接池的配置与使用场景。</li>
+<li>在事务管理中如何保证数据一致性，如何处理并发问题。</li>
+</ul>
+</li>
+<li><strong>实际开发中的经验分享</strong><ul>
+<li>如何定位和解决性能瓶颈（如慢查询分析、索引优化、连接池参数调优）。</li>
+<li>常见的数据库异常和错误如何处理（如死锁、锁等待、事务回滚策略）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>这些考点通常会出现在面试题中，面试官会根据你对基本概念的理解以及实际开发中的经验进行提问。建议你不仅要掌握理论知识，还要通过实际项目经验和案例来说明你对这些概念的理解。希望这些内容对你准备 JDBC 和 MySQL 面试有所帮助！</p>
 
   </div>
   
@@ -2471,10 +2532,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-02-18T22:43:55+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-03-01T15:38:33+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 18, 2025</p>
+    <p>更新于：Mar 1, 2025</p>
   </a>
 </div>
 
@@ -2493,7 +2554,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/&title=代理模式 - hamaha&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/&title=MySQL和JDBC的一些考点 - hamaha&summary="
           
           >
           
@@ -2505,7 +2566,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/&title=代理模式 - hamaha&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/&title=MySQL和JDBC的一些考点 - hamaha&summary="
           
           >
           
@@ -2517,7 +2578,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/&title=代理模式 - hamaha&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/&title=MySQL和JDBC的一些考点 - hamaha&summary="
           
           >
           
@@ -2550,22 +2611,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/02/22/spring/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Spring学习（更新中）</p>
-          <p class='content'>Spring是一款：Java EE 应用框架。
-它尽可能多的实现了构建应用程序所需要的底层代码，使得开发者只需专注于系统功能和业务逻辑的开发。
-学习Spring之前，先了解什么是容器。
-Spri...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/02/11/toeic-2-11/'>
-          <p class='title'>toeic-2-11<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>生词There’s a stack of sheets on the bed.
- A bedside lamp has been turned on.
-lamp
-
-*n.*灯，光源；（用于医疗和...</p>
+        <a class='next' href='/2025/02/28/%E4%BA%8B%E5%8A%A1/'>
+          <p class='title'>事务<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>数据库事务事务（Transaction）是指一组操作，要么全部执行成功，要么全部回滚，保证数据的一致性和完整性。
+为啥？
+小明给小亮转账，转100块钱。他们两个的余额都在余额表中储存。
+sql1...</p>
         </a>
       
     </div>
@@ -2584,7 +2636,7 @@ lamp
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2626,7 +2678,7 @@ lamp
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">代理模式的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%9C%9F%E5%AE%9E%E5%AF%B9%E8%B1%A1%EF%BC%88Real-Object%EF%BC%89"><span class="toc-text">1. 真实对象（Real Object）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BB%A3%E7%90%86%E7%B1%BB%EF%BC%88Proxy%EF%BC%89"><span class="toc-text">2. 代理类（Proxy）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81%EF%BC%88Client%EF%BC%89"><span class="toc-text">3. 客户端代码（Client）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-text">4. 输出结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A"><span class="toc-text">解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E9%A2%98%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">课题！！！！！！</span></a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC-%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9"><span class="toc-text">JDBC 面试考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9"><span class="toc-text">MySQL 面试考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E8%80%83%E7%82%B9"><span class="toc-text">综合考点</span></a></li></ol>
   </div>
 </section>
 
@@ -3120,7 +3172,7 @@ lamp
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"hamaha","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hamaha"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"hamaha"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/技术杂谈/","name":"技术杂谈"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/02/17/代理模式/","name":"代理模式"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"hamaha","url":"http://example.com/","keywords":null,"description":"hamaha","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hamaha"},"publisher":{"@type":"Organization","name":"hamaha","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"代理模式","description":"hamaha","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"hamaha","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/02/17/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/","wordCount":0,"datePublished":"2025-02-16T16:00:00.000Z","dateModified":"2025-02-18T14:43:55.713Z","articleSection":"技术杂谈","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"hamaha","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":"hamaha"},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"hamaha"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/技术杂谈/","name":"技术杂谈"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/03/01/MySQL和JDBC的一些考点/","name":"MySQL和JDBC的一些考点"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"hamaha","url":"http://example.com/","keywords":null,"description":"hamaha","author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":"hamaha"},"publisher":{"@type":"Organization","name":"hamaha","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"MySQL和JDBC的一些考点","description":"hamaha","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"hamaha","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/03/01/MySQL%E5%92%8CJDBC%E7%9A%84%E4%B8%80%E4%BA%9B%E8%80%83%E7%82%B9/","wordCount":0,"datePublished":"2025-02-28T16:00:00.000Z","dateModified":"2025-03-01T07:38:33.453Z","articleSection":"技术杂谈","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
